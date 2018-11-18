@@ -36,14 +36,14 @@
    
 }
 $(document).ready(function () {
-    var category = $("#CatagoryName").val();
-    alert(category);
-    BindServices(category);
+   // var category = $("#CatagoryName").val();
+  
+    BindServices();
 })
-var BindServices = function (id) {
+var BindServices = function () {
     var serviceURL = '/Service/BindServices';
     var categoryid = $("#CatagoryName").val();// $(id).val();
-    alert(categoryid);
+   
     var obj = {};
     obj.category = categoryid;
     $.ajax({
