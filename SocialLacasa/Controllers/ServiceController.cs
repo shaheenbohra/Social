@@ -93,6 +93,23 @@ namespace SocialLacasa.Controllers
             return Json(Result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult changePassword(string username,string oldpassword,string newpassword) {
+            string res="0";
+            var objUser = new User();
+            List<string> Result = new List<string>();
+            try
+            {
+                res = objUser.changePassword(username, oldpassword,newpassword);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            Result.Add(res);
+            return Json(Result, JsonRequestBehavior.AllowGet);
+
+        }
+
     }
 
 }
