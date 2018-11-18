@@ -26,6 +26,7 @@ namespace SocialLacasa.Controllers
         public ActionResult Orders(string status="")
         {
             DataTable dtorders = new DataTable();
+            
             var objUser = new User();
             dtorders = objUser.Getorders(Session["UserId"].ToString(), status);
             DataSet ds = new DataSet();
@@ -48,10 +49,10 @@ namespace SocialLacasa.Controllers
         {
             var objUser = new User();
             DataTable dtCategory = objUser.GetAllCategory();
-            DataRow newRow = dtCategory.NewRow();
-            newRow[0] = "0";
-            newRow[1] = "Select";
-            dtCategory.Rows.InsertAt(newRow, 0);
+            //DataRow newRow = dtCategory.NewRow();
+            //newRow[0] = "0";
+            //newRow[1] = "Select";
+            //dtCategory.Rows.InsertAt(newRow, 0);
             ViewBag.CatagoryName = new SelectList(dtCategory.AsDataView(), "CatagoryId", "CatagoryName");//dtMessages.AsEnumerable().ToList();
 
             //ViewBag.UserId = Session["UserId"];

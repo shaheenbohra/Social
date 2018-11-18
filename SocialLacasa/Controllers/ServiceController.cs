@@ -1,6 +1,8 @@
 ﻿using SocialLacasa.DataLayer;
+using SocialLacasa.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,10 +11,30 @@ namespace SocialLacasa.Controllers
 {
     public class ServiceController : Controller
     {
+        
         // GET: Service
         public ActionResult Index()
         {
             return View();
+        }
+
+
+        public JsonResult BindServices(string category)
+        {
+            var objUser = new User();
+            DataTable dtServices = objUser.BindServices(category);
+           
+            var myEnumerable = dtServices.AsEnumerable();
+
+            List<Services> lstServices =
+                (from item in myEnumerable
+                 select new Services
+                 {
+                     SWserviceId = item.Field<Int32>("SWserviceId"),
+                     ServiceType = item.Field<string>("ServiceType"),
+                     Description = item.Field<string>("Description"),
+                 }).ToList();
+            return Json(lstServices, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SaveNewOrder(string category, string service, string link, string quantity, decimal charge)
@@ -46,7 +68,7 @@ namespace SocialLacasa.Controllers
             }
             catch (Exception ex)
             {
-                issucess = ex.Message.ToString(); 
+                issucess = ex.Message.ToString();
             }
 
             Result.Add(issucess);
@@ -59,7 +81,7 @@ namespace SocialLacasa.Controllers
             List<string> Result = new List<string>();
             try
             {
-                isExist=objUser.CheckUser(userName, password);
+                isExist = objUser.CheckUser(userName, password);
                 Session["UserId"] = isExist;
             }
             catch (Exception ex)
