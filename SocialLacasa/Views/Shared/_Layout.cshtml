@@ -22,5 +22,22 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+          
+            $("#menu-toggle").click(function () {
+                
+                if ($(this).hasClass("open")) {
+                    $(this).removeClass("open");
+                    $("#sidebar-wrapper").css('left', -200);
+                }
+                else {
+                    $(this).addClass("open");
+                    $("#sidebar-wrapper").css('left', 200);
+                }
+               
+            })
+        })
+    </script>
 </body>
 </html>
