@@ -183,6 +183,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Logo.psd" />
+    <Content Include="fonts\SF-Font.dmg" />
     <None Include="Properties\PublishProfiles\sociallacasa - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\sociallacasa - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
