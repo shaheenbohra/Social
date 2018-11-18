@@ -5,3 +5,9 @@
 .vs/SocialLacasa/v15/Server/sqlite3/storage.ide
 .vs/SocialLacasa/v15/Server/sqlite3/storage.ide-shm
 .vs/SocialLacasa/v15/Server/sqlite3/storage.ide-wal
+SocialLacasa/obj/Debug/SocialLacasa.csproj.CoreCompileInputs.cache
+SocialLacasa/bin/SocialLacasa.dll
+SocialLacasa/bin/SocialLacasa.pdb
+SocialLacasa/obj/Debug/SocialLacasa.csprojAssemblyReference.cache
+*.cache
+*.pdb

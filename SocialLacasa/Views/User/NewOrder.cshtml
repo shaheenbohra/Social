@@ -35,11 +35,11 @@
 
 
 
-                            <div class="form-group">
+                          @*  <div class="form-group">
                                 <label for="orderform-category" class="control-label">Category</label>
                                 @Html.DropDownList("CatagoryName", (SelectList)ViewBag.CatagoryName)
 
-                                @*<select class="form-control" id="orderform-category" name="OrderForm[category]">
+                                <select class="form-control" id="orderform-category" name="OrderForm[category]">
                                         <option value="64" selected="">✌  Wizards ✌</option>
                                         <option value="17">Facebook - Page Likes</option>
                                         <option value="48">Facebook - Country Targeted Page Likes</option>
@@ -93,7 +93,7 @@
                                         <option value="62">Twitch Video(VOD) Views</option>
                                         <option value="63">Twitch Channel Total Views</option>
                                         <option value="40">Website Traffic</option>
-                                    </select>*@
+                                    </select>
                             </div>
                             <div class="form-group">
                                 <label for="service" class="control-label">Service (Price / 1000)</label>
@@ -111,7 +111,7 @@
                             <div class="form-group fields" id="service_description">
                                 <label for="service_description" class="control-label">Description</label>
                                 <div class="panel-body border-solid border-rounded">Instant Start<br>1,000,000/day speed<br>Lifetime Guaranteed<br>100 Minimum order<br>1,000,000 Maximum order</div>
-                            </div>
+                            </div> *@
                     <div class="form-group">
                         <label for="orderform-category" class="control-label">Category</label>
                         @Html.DropDownList("CatagoryName", (SelectList)ViewBag.CatagoryName, new { @class =  " form-control zero-pad", onchange = "BindServices()" })
