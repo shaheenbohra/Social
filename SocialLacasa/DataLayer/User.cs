@@ -36,6 +36,38 @@ namespace SocialLacasa.DataLayer
             }
             return isExist;
         }
+
+        public DataTable BindServices(string category)
+        {
+
+            DataTable dtservices = new DataTable();
+            SqlConnection con = new SqlConnection(strConnString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_GetAllServices";
+            cmd.Parameters.Add("@CategoryId", SqlDbType.Int).Value = Convert.ToInt32(category);
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+
+                reader = cmd.ExecuteReader();
+
+                dtservices.Load(reader);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return dtservices;
+        }
         public DataTable Getorders(string UserId, string status = "")
         {
 
