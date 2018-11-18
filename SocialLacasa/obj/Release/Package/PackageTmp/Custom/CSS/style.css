@@ -8,13 +8,14 @@ html {
 body {
     min-height: 100%;
     height: 100%;
+    font-family:cursive;
 }
 
 body {
     /*background-image: url('//i.imgur.com/an4w8si.png');*/
-    background-image: url('/Images/background.jpg');
+   /* background-image: url('/Images/background.jpg');*/
     /*background-image: url('//i.imgur.com/ZzEvqMK.png');*/
-    background-color: #ffffff;
+    background-color: #000000;
     padding: 0;
     color: #353535;
 }
@@ -90,6 +91,8 @@ pre {
 
 .input-group .btn.btn-default {
     background: #353535;
+    color:white;
+    border-color:transparent;
 }
 
     .input-group .btn.btn-default:hover {
@@ -193,7 +196,7 @@ pre {
 }
 
 .navbar-brand {
-    height: 72px;
+    height: 90px;
     font-size: 18px;
     line-height: 60px;
     padding: 0 0 0 0;
@@ -201,7 +204,7 @@ pre {
 }
 
     .navbar-brand img {
-        max-height: 73px;
+        max-height: 90px;
         padding: 0 0 0 0;
         margin: 0 0 0 0;
     }
@@ -313,7 +316,7 @@ pre {
 
 .navbar-default .navbar-nav > li > a {
     /*color: #ffffff;*/
-     color: #FF6600;
+     color: #DD4827;
     ;
     line-height: 43px;
 }
@@ -322,7 +325,7 @@ pre {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
     /*color: #ffffff;*/
-    color: #FF6600;
+    color: #DD4827;
     /*background-color: #2F0909;*/
     background-color: #2F0909;
 }
@@ -330,7 +333,7 @@ pre {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     /*color: #ffffff;*/
-    color: #FF6600;
+    color: #DD4827;
     /*background-color: #2F0909;*/
     background-color: #2F0909;
 }
@@ -480,6 +483,10 @@ table > tbody > tr > td,
 .table > tbody > tr > td {
     border-top: 1px solid #2F0909;
 }
+.nav > li {
+    position: relative;
+
+}
 
 .nav-pills > li > a {
     background: #353535;
@@ -544,7 +551,7 @@ table > tbody > tr > td,
     }
 
         .sidebar-nav li:before {
-            background-color: #FF6600;
+            background-color: #DD4827;
             position: absolute;
             content: '';
             height: 100%;
@@ -580,7 +587,7 @@ table > tbody > tr > td,
 
         .sidebar-nav li a {
             /*color: #ffffff;*/
-            color: #FF6600;
+            color: #DD4827;
             display: block;
             text-decoration: none;
             font-weight: 900;
@@ -619,7 +626,7 @@ table > tbody > tr > td,
     .sidebar-nav li.active a .fa,
     .sidebar-nav li.active a:hover .fa {
         /*color: #ffffff;*/
-        color: #FF6600;
+        color: #DD4827;
     }
 
     .sidebar-nav li a img {
@@ -634,7 +641,7 @@ table > tbody > tr > td,
         /*background: #2F0909;*/
         /*background: #2F0909;*/
         /*color: #ffffff;*/
-        color: #FF6600;
+        color: #DD4827;
         text-decoration: none;
     }
 
@@ -815,6 +822,13 @@ table > tbody > tr > td,
     .tableBox .pull-right.search {
         clear: both;
     }
+}
+.pagination li a {
+    background-color: #353535;
+    color: white;
+}
+.pagination .active a {
+    background-color: #DD4827;
 }
 /* ==========================================================================
    Hassan custom styles

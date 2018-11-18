@@ -3,12 +3,12 @@
     var serviceURL = '/Service/SaveNewOrder';
 
     var obj = {};
-    obj.category = $("#orderform-category").val();
-    obj.service = $("#orderform-service").val();
+    obj.category = $("#CatagoryName").val();
+    obj.service = $("#ddlServices").val();
     obj.link = $("#field-orderform-fields-link").val();
     obj.quantity = $("#field-orderform-fields-quantity").val();
     obj.charge = $("#charge").val();
-    obj.userId = $("#hdnUserId").val();
+   // obj.userId = $("#hdnUserId").val();
    
         $.ajax({
             type: "POST",
@@ -34,4 +34,32 @@
             alert(err.responseText);
         }
    
+}
+$(document).ready(function () {
+   // var category = $("#CatagoryName").val();
+  
+    BindServices();
+})
+var BindServices = function () {
+    var serviceURL = '/Service/BindServices';
+    var categoryid = $("#CatagoryName").val();// $(id).val();
+   
+    var obj = {};
+    obj.category = categoryid;
+    $.ajax({
+        type: "POST",
+        url: serviceURL,
+        data: JSON.stringify(obj),
+        dataType: "json",
+        contentType: "application/json",
+        success: function (res) {
+            $("#ddlServices").empty();
+            $.each(res, function (data, value) {
+
+                $("#ddlServices").append($("<option></option>").val(value.SWserviceId).html(value.ServiceType));
+                $("#dvDescription").html(value.Description);
+            })
+        }
+
+    });  
 }

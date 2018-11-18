@@ -18,7 +18,7 @@
 
         function successFunc(data, status) {
             if (data[0] != "") {
-                window.location.href = "/User/NewOrder?UserId="+data[0];
+                window.location.href = "/User/NewOrder";
             }
             else {
                 alert("Invalid UserName or Password.")
