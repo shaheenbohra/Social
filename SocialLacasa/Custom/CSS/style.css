@@ -91,6 +91,8 @@ pre {
 
 .input-group .btn.btn-default {
     background: #353535;
+    color:white;
+    border-color:transparent;
 }
 
     .input-group .btn.btn-default:hover {
@@ -481,6 +483,10 @@ table > tbody > tr > td,
 .table > tbody > tr > td {
     border-top: 1px solid #2F0909;
 }
+.nav > li {
+    position: relative;
+
+}
 
 .nav-pills > li > a {
     background: #353535;
@@ -816,6 +822,13 @@ table > tbody > tr > td,
     .tableBox .pull-right.search {
         clear: both;
     }
+}
+.pagination li a {
+    background-color: #353535;
+    color: white;
+}
+.pagination .active a {
+    background-color: #DD4827;
 }
 /* ==========================================================================
    Hassan custom styles
