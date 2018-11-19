@@ -33,6 +33,8 @@ namespace SocialLacasa.Controllers
                      SWserviceId = item.Field<Int32>("SWserviceId"),
                      ServiceType = item.Field<string>("ServiceType"),
                      Description = item.Field<string>("Description"),
+                     Rate = item.Field<decimal>("Rate")
+
                  }).ToList();
             return Json(lstServices, JsonRequestBehavior.AllowGet);
         }

@@ -35,6 +35,7 @@
         }
    
 }
+var rate = 100;
 $(document).ready(function () {
    // var category = $("#CatagoryName").val();
   
@@ -55,11 +56,29 @@ var BindServices = function () {
         success: function (res) {
             $("#ddlServices").empty();
             $.each(res, function (data, value) {
+               //  quantity = parseInt($("#field-orderform-fields-quantity").val());
+
+                rate = value.Rate;
+               
+                
 
                 $("#ddlServices").append($("<option></option>").val(value.SWserviceId).html(value.ServiceType));
                 $("#dvDescription").html(value.Description);
+               
             })
         }
 
     });  
 }
+$("#field-orderform-fields-quantity").focusout(function () {
+    if ($("#field-orderform-fields-quantity").val()!= "")
+    {
+        var qu = $("#field-orderform-fields-quantity").val();
+        var quantity = parseInt(qu);
+    var charge = quantity * (rate / 1000);
+    var ch = charge.toFixed(3).toString();
+    $("#charge").val(ch);
+}
+
+
+});
