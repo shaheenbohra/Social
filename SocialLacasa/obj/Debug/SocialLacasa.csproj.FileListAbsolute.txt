@@ -210,3 +210,4 @@ C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.csproj.
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.csproj.CopyComplete
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.dll
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.pdb
+C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.csprojAssemblyReference.cache
