@@ -176,6 +176,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\bgimage.jpg" />
+    <Content Include="Images\finalbg.png" />
+    <Content Include="Images\finallogo.png" />
     <Content Include="Images\fireworks.png" />
     <Content Include="Images\logo1.png" />
     <Content Include="Images\social.jpg" />
