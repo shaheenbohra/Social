@@ -180,5 +180,37 @@ namespace SocialLacasa.DataLayer
 
             }
         }
+
+        public string changePassword(string username, string oldpassword,string newpassword)
+        {
+            string rest = string.Empty;
+            try
+            {
+
+                
+                SqlConnection cn = new SqlConnection(strConnString);
+                SqlCommand cmd = new SqlCommand("updatePassword", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Oldpassword", oldpassword);
+                cmd.Parameters.AddWithValue("@NewPassword", newpassword);
+                
+
+                cn.Open();
+                object res = cmd.ExecuteNonQuery();
+                rest = res.ToString();
+
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return rest;
+        }
+
+
+
     }
 }
