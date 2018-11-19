@@ -1,4 +1,5 @@
 ﻿using SocialLacasa.DataLayer;
+using SocialLacasa.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -49,13 +50,7 @@ namespace SocialLacasa.Controllers
         {
             var objUser = new User();
             DataTable dtCategory = objUser.GetAllCategory();
-            //DataRow newRow = dtCategory.NewRow();
-            //newRow[0] = "0";
-            //newRow[1] = "Select";
-            //dtCategory.Rows.InsertAt(newRow, 0);
             ViewBag.CatagoryName = new SelectList(dtCategory.AsDataView(), "CatagoryId", "CatagoryName");//dtMessages.AsEnumerable().ToList();
-
-            //ViewBag.UserId = Session["UserId"];
             return View();
         }
         public ActionResult Terms()
@@ -64,7 +59,23 @@ namespace SocialLacasa.Controllers
         }
         public ActionResult Services()
         {
-            return View();
+            var objUser = new User();
+            DataTable dtServices = objUser.GetAllServiceCategory();
+            var myEnumerable = dtServices.AsEnumerable();
+
+            List<Services> lstServices =
+                (from item in myEnumerable
+                 select new Services
+                 {
+                     Category = item.Field<string>("Category"),
+                     SWserviceId = item.Field<Int32>("SWserviceId"),
+                     ServiceType = item.Field<string>("ServiceType"),
+                     Rate=item.Field<decimal>("Rate"),
+                     MinOrder = item.Field<Int32>("MinOrder"),
+                     MaxOrder = item.Field<Int32>("MaxOrder"),
+                     Description = item.Field<string>("Description"),
+                 }).ToList();
+            return View(lstServices);
         }
     }
 }

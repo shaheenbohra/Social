@@ -37,6 +37,33 @@ namespace SocialLacasa.DataLayer
             return isExist;
         }
 
+        public DataTable GetAllServiceCategory()
+        {
+
+            DataTable dtservices = new DataTable();
+            SqlConnection con = new SqlConnection(strConnString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_GetServiceCategoryWise";
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+                reader = cmd.ExecuteReader();
+                dtservices.Load(reader);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return dtservices;
+        }
         public DataTable BindServices(string category)
         {
 
@@ -181,20 +208,20 @@ namespace SocialLacasa.DataLayer
             }
         }
 
-        public string changePassword(string username, string oldpassword,string newpassword)
+        public string changePassword(string username, string oldpassword, string newpassword)
         {
             string rest = string.Empty;
             try
             {
 
-                
+
                 SqlConnection cn = new SqlConnection(strConnString);
                 SqlCommand cmd = new SqlCommand("updatePassword", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Username", username);
                 cmd.Parameters.AddWithValue("@Oldpassword", oldpassword);
                 cmd.Parameters.AddWithValue("@NewPassword", newpassword);
-                
+
 
                 cn.Open();
                 object res = cmd.ExecuteNonQuery();
