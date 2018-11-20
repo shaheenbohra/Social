@@ -9,11 +9,12 @@
     }
 </div>
 
-<div class="not-authenticate">
+
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-2 centered">
-                <div class="well">
+                <div style="height:12px;"></div>
+                <div class="well" style="background-color:rgba(0,0,0,.5);">
                     <h2 class="align-left h2_font"><strong>Sign In</strong></h2>
                     <div class="underline">
                         <div class="line"></div>
@@ -38,8 +39,8 @@
 
                         <input type="hidden" name="_csrf" value="Oi06lb-nIJ_HW6kVGNUiZZNH4HWJ8qZHx9Nu3gq6iVRNaA-45cNT5qgP4yIt-Elc4nDSPfmZ_nWQhgHzXszgHA==">
                         @*<button type="submit" class="btn btn-primary">Sign in</button>*@
-                        <input type="button" class="btn btn-primary" value="Sign in" onclick="LoginUser();"/>
-                       @* <span class="pull-right pull-right-middle">Do not have an account? <a href="/Visitor/SignUp">Sign up</a></span>*@
+                        <input type="button" class="btn btn-primary" value="Sign in" onclick="LoginUser();" />
+                        @* <span class="pull-right pull-right-middle">Do not have an account? <a href="/Visitor/SignUp">Sign up</a></span>*@
                     </form>
                 </div>
             </div>
@@ -47,19 +48,11 @@
     </div>
     
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div style="height:12px;"></div>
-                <h6 style="text-align: center; margin-bottom: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; line-height: normal;"><br></h6>
-            </div>
-        </div>
-    </div>
+   
 
     <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
 
 
-</div>
 
 @section Scripts
 {

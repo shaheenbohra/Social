@@ -65,6 +65,7 @@ h5,
 h6,
 p {
     color: white;
+    opacity:1.0;
 }
 p {
     font-family: 'Lato',sans-serif;
@@ -212,7 +213,7 @@ pre {
 
     .navbar-brand img {
         max-height: 90px;
-        padding: 0 0 0 0;
+        padding: 0 0 0 30px;
         margin: 0 0 0 0;
     }
 
@@ -366,13 +367,14 @@ pre {
     /*background: #2F0909;*/
     /*background: #2F0909;*/
     /* background: #fbd634;*/
-    color: #181818;
+    background-color: #DD4827;
+    color: black;
     font-weight: 900;
 }
 
 .navbar .nav > li > a:hover .badge {
     /*background: #ffffff;*/
-    color: #DD4827;
+    color: white;
 }
 
 .form-control {
@@ -472,9 +474,9 @@ label {
 
 table {
     font-size: 14px !important;
-    background: black;
-    opacity:0.5;
-    filter: alpha(opacity=50);
+    background-color:rgba(0,0,0,.5);
+    /*opacity:0.5;*/
+    /*filter: alpha(opacity=50);*/
 }
 
     table > thead > tr > th {
@@ -902,3 +904,15 @@ h1_font {
     font-family: 'Arapey',serif;
     font-size: 7.5rem;
 }
+.panel-default >
+.panel-heading{
+    background-color:black;
+    color:white;
+    border:none;
+    border-radius:0;
+}
+.panel-default {
+border:none;
+}
+    
+    
