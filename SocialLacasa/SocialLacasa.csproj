@@ -170,6 +170,7 @@
     <Content Include="Custom\JS\Neworder.js" />
     <Content Include="Custom\JS\SignIn.js" />
     <Content Include="Custom\JS\Signup.js" />
+    <Content Include="Custom\JS\Ticket.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -234,6 +235,7 @@
     <Content Include="Views\User\MassOrders.cshtml" />
     <Content Include="Views\User\Services.cshtml" />
     <Content Include="Views\User\Terms.cshtml" />
+    <Content Include="Views\User\Tickets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="sociallacasa" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Shruti\\Documents\\work\\Bhakti\\Social\\SocialLacasa\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Shruti\\Documents\\work\\Bhakti\\Social\\SocialLacasa\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DBSocialLacasa-Web.config Connection String" description="" value="Data Source=sociallacasa.database.windows.net;Initial Catalog=dbsocial;User ID=SSadmin;Password=Temp@123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Shruti\\Documents\\work\\Bhakti\\Social\\SocialLacasa\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBSocialLacasa']/@connectionString" />
+  </parameter>
+</parameters>
