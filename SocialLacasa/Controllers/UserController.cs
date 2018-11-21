@@ -51,6 +51,10 @@ namespace SocialLacasa.Controllers
             var objUser = new User();
             DataTable dtCategory = objUser.GetAllCategory();
             ViewBag.CatagoryName = new SelectList(dtCategory.AsDataView(), "CatagoryId", "CatagoryName");//dtMessages.AsEnumerable().ToList();
+
+
+
+
             return View();
         }
         public ActionResult Terms()
