@@ -57,6 +57,29 @@ namespace SocialLacasa.Controllers
             Result.Add(issucess);
             return Json(Result, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult SubmitTicket(string subject, string ticketmessage, string status="closed")
+        {
+            var objUser = new User();
+            string issucess = "0";
+            List<string> Result = new List<string>();
+            try
+            {
+                objUser.SaveNewTicket(subject, ticketmessage, Session["UserId"].ToString(),status);
+                issucess = "1";
+            }
+            catch (Exception ex)
+            {
+                issucess = ex.Message.ToString();
+            }
+
+            Result.Add(issucess);
+            return Json(Result, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
         //Action called when user is registered
         public JsonResult SaveUser(string userName, string password, string email)
         {
