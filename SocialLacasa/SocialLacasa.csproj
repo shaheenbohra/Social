@@ -174,11 +174,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\back.png" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\bgimage.jpg" />
     <Content Include="Images\finalbg.png" />
     <Content Include="Images\finallogo.png" />
     <Content Include="Images\fireworks.png" />
+    <Content Include="Images\final_bg.png" />
+    <Content Include="Images\bulb.png" />
     <Content Include="Images\logo1.png" />
     <Content Include="Images\social.jpg" />
     <Content Include="Scripts\bootstrap.js" />
