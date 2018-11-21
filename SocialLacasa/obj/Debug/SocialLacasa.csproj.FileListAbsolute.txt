@@ -206,8 +206,8 @@ C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\bin\Microsoft.AI.DependencyCol
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\bin\Microsoft.AI.Web.xml
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.csprojAssemblyReference.cache
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.csproj.CopyComplete
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.dll
 C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.pdb
-C:\Users\Lenovo\source\repos\Shaheen\SocialLacasa\obj\Debug\SocialLacasa.csprojAssemblyReference.cache

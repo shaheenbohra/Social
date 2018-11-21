@@ -1,9 +1,12 @@
-﻿using SocialLacasa.DataLayer;
+﻿using Newtonsoft.Json.Linq;
+using SocialLacasa.DataLayer;
 using SocialLacasa.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,7 +20,25 @@ namespace SocialLacasa.Controllers
         {
             return View();
         }
-
+        public JsonResult PlaceOrder_Api(int serviceid,int quantity,string link)
+        {
+            string url = "https://socialwizards.com/api/v2?key=4319270ac33c7579f1d4f8d4c60357a5&action=add&service="+serviceid+ "&link="+link+"&quantity=" + quantity;
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "POST";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36";
+            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            var response = (HttpWebResponse)request.GetResponse();
+            string content = string.Empty;
+            using (var stream = response.GetResponseStream())
+            {
+                using (var sr = new StreamReader(stream))
+                {
+                    content = sr.ReadToEnd();
+                }
+            }
+            var releases = JArray.Parse(content);
+            return Json(releases, JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult BindServices(string category)
         {

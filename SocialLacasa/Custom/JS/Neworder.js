@@ -1,5 +1,28 @@
-﻿var SaveNewOrder = function () {
-    
+﻿var callapi = function () {
+    var obj = {};
+    obj.serviceid = $("#ddlServices").val();
+    obj.quantity = $("#field-orderform-fields-quantity").val();
+    obj.link = $("#field-orderform-fields-link").val();
+    $.ajax({
+        type: "POST",
+        url: "/Service/PlaceOrder_Api",
+        data: JSON.stringify(obj),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            if (data != null) {
+                alert("Order Placed");
+
+            }
+        },
+        error: function (err) { }
+    });
+   
+}
+
+var SaveNewOrder = function () {
+    callapi();
+    return false;
     var serviceURL = '/Service/SaveNewOrder';
 
     var obj = {};
