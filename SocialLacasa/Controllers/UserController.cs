@@ -53,11 +53,6 @@ namespace SocialLacasa.Controllers
             ViewBag.CatagoryName = new SelectList(dtCategory.AsDataView(), "CatagoryId", "CatagoryName");//dtMessages.AsEnumerable().ToList();
             return View();
         }
-
-        public ActionResult Tickets() {
-            return View();
-        }
-
         public ActionResult Terms()
         {
             return View();

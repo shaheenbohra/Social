@@ -456,7 +456,7 @@ label,
 
 label {
     color: #051997;
-    
+    ;
 }
 
 .well {
@@ -478,7 +478,6 @@ label {
 table {
     font-size: 14px !important;
     background-color: #ff0000;
-    overflow-x:scroll;
     /*opacity:0.5;*/
     /*filter: alpha(opacity=50);*/
 }

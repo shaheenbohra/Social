@@ -208,30 +208,6 @@ namespace SocialLacasa.DataLayer
             }
         }
 
-        public void SaveNewTicket(string subject, string message, string userid,string  status)
-        {
-
-            try
-            {
-                SqlConnection cn = new SqlConnection(strConnString);
-                SqlCommand cmd = new SqlCommand("usp_SaveTicket", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@UserId", Convert.ToInt32(userid));
-                cmd.Parameters.AddWithValue("@Subject", subject);
-                cmd.Parameters.AddWithValue("@TicketMessage", message);
-                cmd.Parameters.AddWithValue("@Status",status );
-
-                cn.Open();
-                cmd.ExecuteNonQuery();
-                cn.Close();
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
         public string changePassword(string username, string oldpassword, string newpassword)
         {
             string rest = string.Empty;
