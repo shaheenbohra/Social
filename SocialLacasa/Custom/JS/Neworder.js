@@ -21,8 +21,7 @@
 }
 
 var SaveNewOrder = function () {
-    callapi();
-    return false;
+    
     var serviceURL = '/Service/SaveNewOrder';
 
     var obj = {};

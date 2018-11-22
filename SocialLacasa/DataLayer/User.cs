@@ -182,6 +182,32 @@ namespace SocialLacasa.DataLayer
             }
             return dtCategory;
         }
+        public void SaveFunds(string method, string AccountName, string AccountNumber, string Cvv, decimal Amount, string expiry, string userId)
+        {
+
+            try
+            {
+                SqlConnection cn = new SqlConnection(strConnString);
+                SqlCommand cmd = new SqlCommand("usp_InsAccountfunds", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UserId", Convert.ToInt32(userId));
+                cmd.Parameters.AddWithValue("@AccountFunds", Amount);
+                cmd.Parameters.AddWithValue("@UserAccountNumber", AccountNumber);
+                cmd.Parameters.AddWithValue("@UserCvv", Convert.ToInt32(Cvv));
+                cmd.Parameters.AddWithValue("@ExpiryDate", expiry);
+                cmd.Parameters.AddWithValue("@AccountName", AccountName);
+                cmd.Parameters.AddWithValue("@Method", method);
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         public void SaveNewOrder(string category, string service, string link, string quantity, decimal charge, string userId)
         {
 
