@@ -54,12 +54,12 @@
                         <tbody>
                             @foreach (var d in Model)
                             {
-                                <tr>
-                                    <td>@d.TicketId</td>
-                                    <td><a href="/tickets/17557">@d.Subject</a></td>
-                                    <td>@d.Status</td>
-                                    <td><span class="nowrap">@d.Date</span></td>
-                                </tr>
+                            <tr>
+                                <td>@d.TicketId</td>
+                                <td><a href='@string.Format("/user/TicketDetails?TicketId={0}",@d.TicketId)'>@d.Subject</a></td>
+                                <td>@d.Status</td>
+                                <td><span class="nowrap">@d.Date</span></td>
+                            </tr>
                                     }
 
                             </tbody>

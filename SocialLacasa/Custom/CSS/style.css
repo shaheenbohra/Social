@@ -923,5 +923,48 @@ h1_font {
 .panel-default {
 border:none;
 }
+
+.titcket-title {
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.ticket-message-right {
+}
+
+    .ticket-message-right .ticket-message {
+        background: #fff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        padding: 15px;
+        color: #556574;
+    }
+
+.ticket-message-left {
+}
+
+    .ticket-message-left .ticket-message {
+        background: #fff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        padding: 15px;
+        color: #556574;
+    }
+
+.ticket-message-block {
+    margin-bottom: 15px;
+}
+
+    .ticket-message-block .text-muted {
+        color: #8f9aa5;
+    }
+
+.ticket-message {
+    word-break: break-word;
+}
     
     

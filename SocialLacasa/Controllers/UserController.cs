@@ -77,6 +77,11 @@ namespace SocialLacasa.Controllers
             return View(lstTickets);
         }
 
+
+        public ActionResult TicketDetails(string TicketId) {
+            return View();
+        }
+
         public ActionResult Terms()
         {
             return View();
