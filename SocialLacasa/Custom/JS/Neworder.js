@@ -19,19 +19,43 @@
     });
    
 }
-
-var SaveNewOrder = function () {
-    
-    var serviceURL = '/Service/SaveNewOrder';
-
+var GetAccountFunds = function (charge) {
+    var isExist = "0";
     var obj = {};
-    obj.category = $("#CatagoryName").val();
-    obj.service = $("#ddlServices").val();
-    obj.link = $("#field-orderform-fields-link").val();
-    obj.quantity = $("#field-orderform-fields-quantity").val();
-    obj.charge = $("#charge").val();
-   // obj.userId = $("#hdnUserId").val();
-   
+    obj.charge = charge;
+    $.ajax({
+        type: "POST",
+        url: "/Service/GetAccountFunds",
+        async: false,
+        data: JSON.stringify(obj),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            if (data[0] != null) {
+                isExist = data[0];
+
+            }
+        },
+        error: function (err) {
+            alert(err.responseText);
+        }
+        
+    });
+    return isExist;
+}
+var SaveNewOrder = function () {
+    var IsFundsExist = GetAccountFunds($("#charge").val());
+    if (IsFundsExist == "1") {
+        var serviceURL = '/Service/SaveNewOrder';
+
+        var obj = {};
+        obj.category = $("#CatagoryName").val();
+        obj.service = $("#ddlServices").val();
+        obj.link = $("#field-orderform-fields-link").val();
+        obj.quantity = $("#field-orderform-fields-quantity").val();
+        obj.charge = $("#charge").val();
+        // obj.userId = $("#hdnUserId").val();
+
         $.ajax({
             type: "POST",
             url: serviceURL,
@@ -55,6 +79,10 @@ var SaveNewOrder = function () {
         function errorFunc(err) {
             alert(err.responseText);
         }
+    }
+    else {
+        alert("Insuficient Funds!")
+    }
    
 }
 var rate = 100;

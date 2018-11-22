@@ -95,6 +95,107 @@ namespace SocialLacasa.DataLayer
             }
             return dtservices;
         }
+
+        public string GetRate(int serviceId)
+        {
+            string rate = "0";
+            DataTable dtfunds = new DataTable();
+            SqlConnection con = new SqlConnection(strConnString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_GetRateOfService";
+            cmd.Parameters.Add("@serviceId", SqlDbType.Int).Value =serviceId;
+            //  cmd.Parameters.Add("@charge", SqlDbType.Decimal).Value = charge;
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+
+                reader = cmd.ExecuteReader();
+
+                dtfunds.Load(reader);
+                rate = Convert.ToString(dtfunds.Rows[0][0]);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return rate;
+        }
+        public string GetAccountFund(string UserId)
+        {
+            string charges = "0";
+            DataTable dtfunds = new DataTable();
+            SqlConnection con = new SqlConnection(strConnString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_GetAccountFunds";
+            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(UserId);
+            //  cmd.Parameters.Add("@charge", SqlDbType.Decimal).Value = charge;
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+
+                reader = cmd.ExecuteReader();
+
+                dtfunds.Load(reader);
+                charges = Convert.ToString(dtfunds.Rows[0][0]);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return charges;
+        }
+        public string GetCharge(string UserId, decimal charge)
+        {
+            string isExist = "0";
+            DataTable dtfunds = new DataTable();
+            SqlConnection con = new SqlConnection(strConnString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_checkfunds";
+            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(UserId);
+            //  cmd.Parameters.Add("@charge", SqlDbType.Decimal).Value = charge;
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+
+                reader = cmd.ExecuteReader();
+
+                dtfunds.Load(reader);
+                string accountfunds = dtfunds.Rows[0][0].ToString();
+                if (Convert.ToDecimal(accountfunds) >= charge)
+                {
+                    isExist = "1";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return isExist;
+        }
         public DataTable Getorders(string UserId, string status = "")
         {
 
@@ -234,7 +335,7 @@ namespace SocialLacasa.DataLayer
             }
         }
 
-        public void SaveNewTicket(string subject, string message, string userid,string  status)
+        public void SaveNewTicket(string subject, string message, string userid, string status)
         {
 
             try
@@ -245,7 +346,30 @@ namespace SocialLacasa.DataLayer
                 cmd.Parameters.AddWithValue("@UserId", Convert.ToInt32(userid));
                 cmd.Parameters.AddWithValue("@Subject", subject);
                 cmd.Parameters.AddWithValue("@TicketMessage", message);
-                cmd.Parameters.AddWithValue("@Status",status );
+                cmd.Parameters.AddWithValue("@Status", status);
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void saveTicketMessage(string message, string ticketid, bool sentbycustomer=false)
+        {
+
+            try
+            {
+                SqlConnection cn = new SqlConnection(strConnString);
+                SqlCommand cmd = new SqlCommand("usp_SaveTicketMessage", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Message", message);
+                cmd.Parameters.AddWithValue("@TicketId", Convert.ToInt32(ticketid));
+                cmd.Parameters.AddWithValue("@SentByCustomer", sentbycustomer);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -259,7 +383,9 @@ namespace SocialLacasa.DataLayer
         }
 
 
-        public DataTable GetAllTicketsForUser(string userid) {
+
+        public DataTable GetAllTicketsForUser(string userid)
+        {
 
             DataTable dtTickets = new DataTable();
             SqlConnection con = new SqlConnection(strConnString);
@@ -267,7 +393,7 @@ namespace SocialLacasa.DataLayer
             SqlDataReader reader;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_GetAllTicketsForUser";
-            cmd.Parameters.Add("@userid", SqlDbType.Int).Value = userid;
+            cmd.Parameters.Add("@userid", SqlDbType.Int).Value = Convert.ToInt32(userid); 
             cmd.Connection = con;
             try
             {
@@ -288,6 +414,43 @@ namespace SocialLacasa.DataLayer
                 con.Dispose();
             }
             return dtTickets;
+
+
+        }
+
+
+        public DataTable GetTicketConversation(string userid, string ticketid)
+        {
+
+            DataTable dtMessages = new DataTable();
+            SqlConnection con = new SqlConnection(strConnString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_GetTicketConversation";
+            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(userid);
+            cmd.Parameters.Add("@TicketId", SqlDbType.Int).Value = Convert.ToInt32(ticketid);
+
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+
+                reader = cmd.ExecuteReader();
+
+                dtMessages.Load(reader);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return dtMessages;
 
 
         }
@@ -321,6 +484,7 @@ namespace SocialLacasa.DataLayer
             }
             return rest;
         }
+
 
 
 

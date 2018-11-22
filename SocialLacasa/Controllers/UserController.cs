@@ -50,11 +50,10 @@ namespace SocialLacasa.Controllers
         {
             var objUser = new User();
             DataTable dtCategory = objUser.GetAllCategory();
+
             ViewBag.CatagoryName = new SelectList(dtCategory.AsDataView(), "CatagoryId", "CatagoryName");//dtMessages.AsEnumerable().ToList();
-
-
-
-
+            string charges = objUser.GetAccountFund(Session["UserId"].ToString());
+            Session["charges"] = charges;
             return View();
         }
 
@@ -73,13 +72,31 @@ namespace SocialLacasa.Controllers
                      TicketMessage = item.Field<string>("TicketMessage"),
                      Status = item.Field<string>("Status"),
                      Date = item.Field<DateTime>("Date"),
+
                  }).ToList();
             return View(lstTickets);
         }
 
 
         public ActionResult TicketDetails(string TicketId) {
-            return View();
+            var objuser = new User();
+            DataTable dtMessages = objuser.GetTicketConversation(Session["UserId"].ToString(), TicketId);
+            var myEnumerable = dtMessages.AsEnumerable();
+
+            List<Messages> lstMessages =
+                (from item in myEnumerable
+                 select new Messages
+                 {
+                     Subject = item.Field<string>("Subject"),
+                     TicketMessage = item.Field<string>("TicketMessage"),
+                     Date = item.Field<DateTime>("Date"),
+                     Message = item.Field<string>("Message"),
+                     MessageDate = item.Field<DateTime>("MessageDate"),
+                     SentByCustomer = item.Field<bool>("SentByCustomer"),
+                     TicketId = item.Field<int>("TicketId"),
+                 }).ToList();
+            return View(lstMessages);
+
         }
 
         public ActionResult Terms()
