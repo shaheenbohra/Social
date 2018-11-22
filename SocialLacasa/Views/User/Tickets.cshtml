@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<SocialLacasa.Models.Tickets>
 @{
     ViewBag.Title = "Tickets";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -51,7 +51,20 @@
                             </tr>
                         </thead>
 
-                    </table>
+                        <tbody>
+                            @foreach (var d in Model)
+                            {
+                                <tr>
+                                    <td>@d.TicketId</td>
+                                    <td><a href="/tickets/17557">@d.Subject</a></td>
+                                    <td>@d.Status</td>
+                                    <td><span class="nowrap">@d.Date</span></td>
+                                </tr>
+                                    }
+
+                            </tbody>
+
+                        </table>
                 </div>
             </div>
         </div>

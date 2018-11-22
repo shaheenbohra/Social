@@ -369,7 +369,7 @@ pre {
     /*background: #2F0909;*/
     /*background: #2F0909;*/
     /* background: #fbd634;*/
-    background-color: #ff0000;
+    background-color: #DE4827;
     color: #051997;
     
     font-weight: 900;
@@ -465,7 +465,7 @@ label {
     /*background-color: #fad534;*/
     /*background-color: #efde94;*/
     /*background-color: #f2e942;*/
-    background-color: #ff0000;
+    background-color: #DE4827;
     /* -webkit-box-shadow: 0 0 20px rgba(250,213,52,.6), inset 0 0 20px rgba(250,213,52,1);
     -moz-box-shadow: 0 0 20px rgba(250,213,52,.6), inset 0 0 20px rgba(250,213,52,1);
     -ms-box-shadow: 0 0 20px rgba(250,213,52,.6), inset 0 0 20px rgba(250,213,52,1);
@@ -477,7 +477,7 @@ label {
 
 table {
     font-size: 14px !important;
-    background-color: #ff0000;
+    background-color: #DE4827;
     overflow-x:scroll;
     /*opacity:0.5;*/
     /*filter: alpha(opacity=50);*/
@@ -492,7 +492,7 @@ table {
 .aloneHsnTd {
     /*background: #2F0909;*/
     background: #051997;
-    color: #ff0000;
+    color: #DE4827;
 }
 
 table > tbody > tr > td {
@@ -513,7 +513,7 @@ table > tbody > tr > td,
 .nav-pills > li > a {
     background: #051997;
     
-    color: #ff0000;
+    color: #DE4827;
 }
 
 
@@ -914,7 +914,7 @@ h1_font {
 }
 .panel-default >
 .panel-heading {
-    background-color: #ff0000;
+    background-color: #DE4827;
     color: #051997;
     
     border: none;

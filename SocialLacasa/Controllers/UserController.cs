@@ -59,7 +59,22 @@ namespace SocialLacasa.Controllers
         }
 
         public ActionResult Tickets() {
-            return View();
+            var objUser = new User();
+            DataTable dtTickets = objUser.GetAllTicketsForUser(Session["UserId"].ToString());
+            var myEnumerable = dtTickets.AsEnumerable();
+
+            List<Tickets> lstTickets =
+                (from item in myEnumerable
+                 select new Tickets
+                 {
+                     TicketId = item.Field<Int32>("TicketId"),
+                     UserId = item.Field<Int32>("UserId"),
+                     Subject = item.Field<string>("Subject"),
+                     TicketMessage = item.Field<string>("TicketMessage"),
+                     Status = item.Field<string>("Status"),
+                     Date = item.Field<DateTime>("Date"),
+                 }).ToList();
+            return View(lstTickets);
         }
 
         public ActionResult Terms()
