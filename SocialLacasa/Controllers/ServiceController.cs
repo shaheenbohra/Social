@@ -116,6 +116,25 @@ namespace SocialLacasa.Controllers
             return Json(Result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult saveTicketMessage(string message,string ticketid)
+        {
+            var objUser = new User();
+            string issucess = "0";
+            List<string> Result = new List<string>();
+            try
+            {
+                objUser.saveTicketMessage(message,ticketid,true);
+                issucess = "1";
+            }
+            catch (Exception ex)
+            {
+                issucess = ex.Message.ToString();
+            }
+
+            Result.Add(issucess);
+            return Json(Result, JsonRequestBehavior.AllowGet);
+        }
+
 
 
 

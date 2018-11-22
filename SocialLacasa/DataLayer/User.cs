@@ -258,6 +258,30 @@ namespace SocialLacasa.DataLayer
             }
         }
 
+        public void saveTicketMessage(string message, string ticketid, bool sentbycustomer=false)
+        {
+
+            try
+            {
+                SqlConnection cn = new SqlConnection(strConnString);
+                SqlCommand cmd = new SqlCommand("usp_SaveTicketMessage", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Message", message);
+                cmd.Parameters.AddWithValue("@TicketId", Convert.ToInt32(ticketid));
+                cmd.Parameters.AddWithValue("@SentByCustomer", sentbycustomer);
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
 
         public DataTable GetAllTicketsForUser(string userid) {
 
@@ -267,7 +291,7 @@ namespace SocialLacasa.DataLayer
             SqlDataReader reader;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_GetAllTicketsForUser";
-            cmd.Parameters.Add("@userid", SqlDbType.Int).Value = userid;
+            cmd.Parameters.Add("@userid", SqlDbType.Int).Value = Convert.ToInt32(userid); 
             cmd.Connection = con;
             try
             {
@@ -288,6 +312,43 @@ namespace SocialLacasa.DataLayer
                 con.Dispose();
             }
             return dtTickets;
+
+
+        }
+
+
+        public DataTable GetTicketConversation(string userid, string ticketid)
+        {
+
+            DataTable dtMessages = new DataTable();
+            SqlConnection con = new SqlConnection(strConnString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_GetTicketConversation";
+            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(userid);
+            cmd.Parameters.Add("@TicketId", SqlDbType.Int).Value = Convert.ToInt32(ticketid);
+
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+
+                reader = cmd.ExecuteReader();
+
+                dtMessages.Load(reader);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return dtMessages;
 
 
         }
@@ -321,6 +382,7 @@ namespace SocialLacasa.DataLayer
             }
             return rest;
         }
+
 
 
 
