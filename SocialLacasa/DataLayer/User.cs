@@ -258,6 +258,41 @@ namespace SocialLacasa.DataLayer
             }
         }
 
+
+        public DataTable GetAllTicketsForUser(string userid) {
+
+            DataTable dtTickets = new DataTable();
+            SqlConnection con = new SqlConnection(strConnString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_GetAllTicketsForUser";
+            cmd.Parameters.Add("@userid", SqlDbType.Int).Value = userid;
+            cmd.Connection = con;
+            try
+            {
+                con.Open();
+
+                reader = cmd.ExecuteReader();
+
+                dtTickets.Load(reader);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+            return dtTickets;
+
+
+        }
+
+
         public string changePassword(string username, string oldpassword, string newpassword)
         {
             string rest = string.Empty;
@@ -286,6 +321,7 @@ namespace SocialLacasa.DataLayer
             }
             return rest;
         }
+
 
 
 
